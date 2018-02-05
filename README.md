@@ -144,7 +144,7 @@
 
 ####Android：
 
-具体参考[SDK接口说明](.../接口文档) 以及demo中的使用
+具体参考[SDK接口说明](https://github.com/heiman998/HmDemoV1/tree/master/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3) 以及demo中的使用
 
  
 
