@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.heiman.hmdemov1"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            assets.srcDirs = ['src/main/assets', 'src/main/assets/']
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    google()
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.lzy.net:okgo:+'
+    compile 'com.lzy.net:okrx:+'
+
+    // appcompat-v7包是必须的
+    compile 'me.yokeyword:fragmentation:1.2.5'
+
+// 如果不想继承SupportActivity/Fragment，自己定制Support，可仅依赖:
+// compile 'me.yokeyword:fragmentation-core:1.2.5'
+
+// 如果想使用SwipeBack 滑动边缘退出Fragment/Activity功能，完整的添加规则如下：
+    compile 'me.yokeyword:fragmentation:1.2.5'
+// swipeback基于fragmentation, 如果是自定制SupportActivity/Fragment，则参照SwipeBackActivity/Fragment实现即可
+    compile 'me.yokeyword:fragmentation-swipeback:1.2.5'
+
+// Activity作用域的EventBus，更安全，可有效避免after onSavenInstanceState()异常
+    compile 'me.yokeyword:eventbus-activity-scope:1.1.0'
+// Your EventBus's version
+    compile 'org.greenrobot:eventbus:3.1.1'
+//    implementation project(':hmapisdkv1')
+}
